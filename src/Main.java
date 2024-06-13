@@ -64,7 +64,7 @@ public class Main {
 
         //show the results and the winner
         System.out.println("\nResultados:");
-        System.out.printf("%-15s", "Chapulín");
+        System.out.printf("%-15s", "Chapulin");
         for (String puesto : vecRuta) {
             System.out.printf("%-15s", puesto);
         }
