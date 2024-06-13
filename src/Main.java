@@ -9,7 +9,7 @@ Goals...........: Make the exam and have a good note
 Professor.......: Jorge Ruiz (york)
 Student.........:  Johel Mena
 =================================================================================*/
-import java.io.PrintStream;
+
 import java.util.Scanner;
 
 public class Main {
@@ -70,7 +70,7 @@ public class Main {
         }
         System.out.printf("%-15s\n", "Total");
         for (int i = 0; i < chapulines; i++) {
-            PrintStream printf = System.out.printf("%-15s", vecChapu[i]);
+              System.out.printf("%-15s", vecChapu[i]);
             for (int j = 0; j < rutas; j++) {
                 System.out.printf("%-15d", tiempo[i][j]);
             }
