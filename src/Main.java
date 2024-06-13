@@ -9,6 +9,7 @@ Goals...........: Make the exam and have a good note
 Professor.......: Jorge Ruiz (york)
 Student.........:  Johel Mena
 =================================================================================*/
+import java.io.PrintStream;
 import java.util.Scanner;
 
 public class Main {
@@ -37,29 +38,54 @@ public class Main {
             //create the matrix for declare the time
         int[][] tiempo = new int[rutas][chapulines];
         for(int i = 0;  i < chapulines ; i++) {
-            System.out.println(" El chapulin "+vecChapu+":");
-            for(int j = 0;  j < rutas; j++) {
-                System.out.println("Ingrese el tiempo para la ruta "+vecRuta[j]+":");
-               tiempo[i][j]= scanner.nextInt();
-
-               // create the formula for the winner
-                int ganador=0;
-                int tiempoMenor= Integer.MAX_VALUE;
-
-                for ( i= 0; i < chapulines; i++) {
-                    int tiempoTotal = 0;
-                    for (j = 0; j < rutas; j++) {
-                        tiempoTotal += tiempo[i][j];
-                    }
-                    if (tiempoTotal < tiempoMenor) {
-                        tiempoMenor = tiempoTotal;
-                        ganador = i;
-                    }
-                }
-
+            System.out.println(" El chapulin " + vecChapu[i]+ ":");
+            for (int j = 0; j < rutas; j++) {
+                System.out.println("Ingrese el tiempo para la ruta " + vecRuta[j] + ":");
+                tiempo[i][j] = scanner.nextInt();
             }
         }
 
+        // create the formula for the winner
+        int[] tiempTotales = new int[chapulines];
+        int tiempMinimo = Integer.MAX_VALUE;
+        int ganador = -1;
+
+        for (int i = 0; i <  chapulines; i++) {
+            int tiempTotal = 0;
+            for (int j = 0; j < rutas; j++) {
+                tiempTotal += tiempo[i][j];
+            }
+            tiempTotales[i] = tiempTotal;
+            if (tiempTotal < tiempMinimo) {
+                tiempMinimo = tiempTotal;
+                ganador = i;
+            }
+        }
+
+        //show the results and the winner
+        System.out.println("\nResultados:");
+        System.out.printf("%-15s", "Chapulín");
+        for (String puesto : vecRuta) {
+            System.out.printf("%-15s", puesto);
+        }
+        System.out.printf("%-15s\n", "Total");
+        for (int i = 0; i < chapulines; i++) {
+            PrintStream printf = System.out.printf("%-15s", vecChapu[i]);
+            for (int j = 0; j < rutas; j++) {
+                System.out.printf("%-15d", tiempo[i][j]);
+            }
+            System.out.printf("%-15d\n", tiempTotales[i]);
+        }
+
+        System.out.println("\nEl ganador es: " + vecChapu[ganador] + " con un tiempo de " + tiempMinimo );
+
+
+
+
+
 
     }
-}
+
+
+
+    }
